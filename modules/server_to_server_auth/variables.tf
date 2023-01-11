@@ -52,7 +52,7 @@ variable "access_token_lifetime_minutes" {
 variable "secret_id" {
   type        = string
   nullable    = false
-  description = "This ID is the value for your secret in AWS that contains client IDs and secrets for your client/server side apps"
+  description = "This ID is the value for your secret in AWS that contains client IDs and secrets for your client/server side apps.  The secret should be JSON, and have the keys `[client_client_id, client_client_secret, server_client_id, server_client_secret]`"
 }
 
 variable "redirect_uris" {
