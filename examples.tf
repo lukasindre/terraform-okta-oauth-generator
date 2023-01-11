@@ -1,6 +1,6 @@
 /*
 module "example_app" {
-  source         = "./modules/server_to_server_auth"
+  source         = "${ path/to/module | module_url }"
   label          = "Test App"
   secret_id      = "test-secret"
 }
