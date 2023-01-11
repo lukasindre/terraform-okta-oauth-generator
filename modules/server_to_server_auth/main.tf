@@ -6,7 +6,7 @@ resource "okta_app_oauth" "client_side_app" {
   token_endpoint_auth_method = "client_secret_basic"
   client_id                  = local.creds["client_client_id"]
   client_basic_secret        = local.creds["client_client_secret"]
-  omit_secret                = true # allows us to keep this value out of state
+  omit_secret                = true
   redirect_uris              = var.redirect_uris
 }
 
@@ -18,7 +18,7 @@ resource "okta_app_oauth" "server_side_app" {
   token_endpoint_auth_method = "client_secret_basic"
   client_id                  = local.creds["server_client_id"]
   client_basic_secret        = local.creds["server_client_secret"]
-  omit_secret                = true # allows us to keep this value out of state
+  omit_secret                = true
   redirect_uris              = var.redirect_uris
 }
 
