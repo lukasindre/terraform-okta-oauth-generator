@@ -45,8 +45,9 @@ No modules.
 | <a name="input_client_response_types"></a> [client\_response\_types](#input\_client\_response\_types) | type of response from auth server | `list(string)` | <pre>[<br>  "token",<br>  "code"<br>]</pre> | no |
 | <a name="input_client_type"></a> [client\_type](#input\_client\_type) | the type of application this is (web) | `string` | `"web"` | no |
 | <a name="input_label"></a> [label](#input\_label) | this is the name of your service | `string` | n/a | yes |
+| <a name="input_policy_description"></a> [policy\_description](#input\_policy\_description) | this allows you to set the description for your apps access policy | `string` | `"This policy is made for the application it is constrained to"` | no |
 | <a name="input_redirect_uris"></a> [redirect\_uris](#input\_redirect\_uris) | list of redirect URIs for a redirect-based flow | `list(string)` | <pre>[<br>  "https://google.com"<br>]</pre> | no |
-| <a name="input_scopes"></a> [scopes](#input\_scopes) | list of scope objects that you'll need for your app | `list(any)` | <pre>[<br>  {<br>    "description": "admin permission for your services object",<br>    "name": "service.object.admin"<br>  },<br>  {<br>    "description": "read permission for your service's object",<br>    "name": "service.object.read"<br>  }<br>]</pre> | no |
+| <a name="input_scopes"></a> [scopes](#input\_scopes) | list of scope objects that you'll need for your app | <pre>list(object({<br>    name        = string,<br>    description = string<br>  }))</pre> | <pre>[<br>  {<br>    "description": "admin permission for your services object",<br>    "name": "service.object.admin"<br>  },<br>  {<br>    "description": "read permission for your service's object",<br>    "name": "service.object.read"<br>  }<br>]</pre> | no |
 | <a name="input_secret_id"></a> [secret\_id](#input\_secret\_id) | This ID is the value for your secret in AWS that contains client IDs and secrets for your client/server side apps.  The secret should be JSON, and have the keys `[client_client_id, client_client_secret, server_client_id, server_client_secret]` | `string` | n/a | yes |
 
 ## Outputs

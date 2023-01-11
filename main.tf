@@ -35,7 +35,7 @@ resource "okta_auth_server_policy" "app_policy" {
   client_whitelist = [
     local.creds["client_client_id"]
   ]
-  description = "test"
+  description = var.policy_description
   priority    = 1
   depends_on = [
     okta_app_oauth.client_side_app

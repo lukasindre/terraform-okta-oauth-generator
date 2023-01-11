@@ -30,7 +30,10 @@ variable "client_response_types" {
 }
 
 variable "scopes" {
-  type        = list(any)
+  type = list(object({
+    name        = string,
+    description = string
+  }))
   nullable    = false
   description = "list of scope objects that you'll need for your app"
   default = [{
@@ -62,9 +65,15 @@ variable "redirect_uris" {
   description = "list of redirect URIs for a redirect-based flow"
 }
 
+variable "policy_description" {
+  type = string
+  default = "This policy is made for the application it is constrained to" 
+  description = "this allows you to set the description for your apps access policy"
+}
+
 locals {
   default_auth_server_id = data.okta_auth_server.default.id
-  scope_names           = [for scope in var.scopes : scope["name"]]
-  scope_resource_object = { for scope in var.scopes : scope["name"] => scope }
-  creds                 = jsondecode(data.aws_secretsmanager_secret_version.creds.secret_string)
+  scope_names            = [ for scope in var.scopes : scope["name"] ]
+  scope_resource_object  = { for scope in var.scopes : scope["name"] => scope }
+  creds                  = jsondecode(data.aws_secretsmanager_secret_version.creds.secret_string)
 }
