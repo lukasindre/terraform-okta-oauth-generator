@@ -66,14 +66,14 @@ variable "redirect_uris" {
 }
 
 variable "policy_description" {
-  type = string
-  default = "This policy is made for the application it is constrained to" 
+  type        = string
+  default     = "This policy is made for the application it is constrained to"
   description = "this allows you to set the description for your apps access policy"
 }
 
 locals {
   default_auth_server_id = data.okta_auth_server.default.id
-  scope_names            = [ for scope in var.scopes : scope["name"] ]
+  scope_names            = [for scope in var.scopes : scope["name"]]
   scope_resource_object  = { for scope in var.scopes : scope["name"] => scope }
   creds                  = jsondecode(data.aws_secretsmanager_secret_version.creds.secret_string)
 }
