@@ -1,4 +1,4 @@
-# okta_server_to_server_auth
+# terraform-okta-oauth-generator
 
 Here is an example of how easy it is for developers to build oauth with Okta using Terraform
 
