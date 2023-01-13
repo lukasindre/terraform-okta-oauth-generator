@@ -1,14 +1,4 @@
 /*
-The most simple declaration of the module
-
-module "example_app" {
-  source         = "${ path/to/module | module_url }"
-  label          = "Test App"
-  secret_id      = "test-secret"
-}
-*/
-
-/*
 This declaration includes a couple more custom values
 that would most likely be used in a production scenario
 
