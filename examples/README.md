@@ -1,1 +1,1 @@
-You can find both a simple and more complex declaration of this module here
+You can find both a simple and more complex declaration of this module here.  These examples use the AWS provider to load in secrets via Secrets Manager.  An article I find helpful in managing secrets in Terraform can be read [here](https://blog.gruntwork.io/a-comprehensive-guide-to-managing-secrets-in-your-terraform-code-1d586955ace1#bebe)  
