@@ -1,8 +1,8 @@
 resource "okta_app_oauth" "client_side_app" {
   label                      = "${var.label} - Client"
-  type                       = var.client_type
-  grant_types                = var.client_grant_types
-  response_types             = var.client_response_types
+  type                       = var.oauth_config["application_type"]
+  grant_types                = var.oauth_config["grant_types"]
+  response_types             = var.oauth_config["response_types"]
   token_endpoint_auth_method = "client_secret_basic"
   client_id                  = var.client_credentials["client_client_id"]
   client_basic_secret        = var.client_credentials["client_client_secret"]
@@ -12,9 +12,9 @@ resource "okta_app_oauth" "client_side_app" {
 
 resource "okta_app_oauth" "server_side_app" {
   label                      = "${var.label} - Server"
-  type                       = var.client_type
-  grant_types                = var.client_grant_types
-  response_types             = var.client_response_types
+  type                       = var.oauth_config["application_type"]
+  grant_types                = var.oauth_config["grant_types"]
+  response_types             = var.oauth_config["response_types"]
   token_endpoint_auth_method = "client_secret_basic"
   client_id                  = var.client_credentials["server_client_id"]
   client_basic_secret        = var.client_credentials["server_client_secret"]
