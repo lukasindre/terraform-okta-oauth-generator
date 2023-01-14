@@ -52,10 +52,16 @@ variable "access_token_lifetime_minutes" {
   description = "number of minutes your access token is valid for"
 }
 
-variable "secret_id" {
-  type        = string
+variable "client_credentials" {
+  type = object({
+    client_client_id     = string,
+    client_client_secret = string,
+    server_client_id     = string,
+    server_client_secret = string
+  })
   nullable    = false
-  description = "This ID is the value for your secret in AWS that contains client IDs and secrets for your client/server side apps.  The secret should be JSON, and have the keys `[client_client_id, client_client_secret, server_client_id, server_client_secret]`"
+  description = "This object is sensitive, and contains the credentials you wish to use for your okta oauth clients.  Please make sure to use a secure way to load in your secrets."
+  sensitive   = true
 }
 
 variable "redirect_uris" {
