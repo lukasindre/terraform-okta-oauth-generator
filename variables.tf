@@ -62,13 +62,10 @@ variable "oauth_config" {
   default = {
     application_type = "web"
     grant_types = [
-      "client_credentials",
-      "authorization_code",
-      "implicit"
+      "client_credentials"
     ]
     response_types = [
-      "token",
-      "code"
+      "token"
     ]
   }
   description = "This holds the request and response parameters for your oauth applications"
