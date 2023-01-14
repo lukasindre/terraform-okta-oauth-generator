@@ -70,4 +70,13 @@ variable "oauth_config" {
     ]
   }
   description = "This holds the request and response parameters for your oauth applications"
+
+  validation {
+    condition = var.oauth_config["application_type"] == "web" ? contains(var.oauth_config["grant_types"], "authorization_code") : true
+    error_message = "If your application type is `web`, you must AT LEAST have `authorization_code` in your `grant_types` list"
+  }
+  validation {
+    condition = contains(var.oauth_config["response_types"], "token") ? contains(var.oauth_config["grant_types"], "implicit") : true
+    error_message = "If you have `token` in `response_types`, you MUST have `implicit` as a `grant_type`."
+  }
 }
