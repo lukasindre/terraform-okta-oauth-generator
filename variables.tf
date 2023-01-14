@@ -66,7 +66,6 @@ variable "oauth_config" {
       "authorization_code"
     ]
     response_types = [
-      "token",
       "code"
     ]
   }
