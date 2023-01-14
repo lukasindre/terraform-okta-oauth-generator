@@ -66,7 +66,8 @@ variable "oauth_config" {
       "authorization_code"
     ]
     response_types = [
-      "token"
+      "token",
+      "code"
     ]
   }
   description = "This holds the request and response parameters for your oauth applications"
