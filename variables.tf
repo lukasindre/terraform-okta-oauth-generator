@@ -2,6 +2,10 @@ variable "label" {
   type        = string
   nullable    = false
   description = "this is the name of your service"
+  validation {
+    condition     = 1 <= length(var.label) && length(var.label) <= 100
+    error_message = "Your app's label should be [1..100] characters long."
+  }
 }
 
 variable "scopes" {
@@ -55,8 +59,8 @@ variable "policy_description" {
 variable "oauth_config" {
   type = object({
     application_type = string,
-    grant_types = list(string),
-    response_types = list(string)
+    grant_types      = list(string),
+    response_types   = list(string)
   })
   nullable = false
   default = {
@@ -72,11 +76,12 @@ variable "oauth_config" {
   description = "This holds the request and response parameters for your oauth applications"
 
   validation {
-    condition = var.oauth_config["application_type"] == "web" ? contains(var.oauth_config["grant_types"], "authorization_code") : true
+    condition     = var.oauth_config["application_type"] == "web" ? contains(var.oauth_config["grant_types"], "authorization_code") : true
     error_message = "If your application type is `web`, you must AT LEAST have `authorization_code` in your `grant_types` list"
   }
+
   validation {
-    condition = contains(var.oauth_config["response_types"], "token") ? contains(var.oauth_config["grant_types"], "implicit") : true
+    condition     = contains(var.oauth_config["response_types"], "token") ? contains(var.oauth_config["grant_types"], "implicit") : true
     error_message = "If you have `token` in `response_types`, you MUST have `implicit` as a `grant_type`."
   }
 }

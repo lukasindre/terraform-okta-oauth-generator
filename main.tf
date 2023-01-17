@@ -62,4 +62,14 @@ locals {
   default_auth_server_id = data.okta_auth_server.default.id
   scope_names            = [for scope in var.scopes : scope["name"]]
   scope_resource_object  = { for scope in var.scopes : scope["name"] => scope }
+  /*
+  Cross variable validation that checks for redirect URIs when using only 
+  `password` as a grant type.  This will fail at runtime of `terraform plan/apply`
+  */
+  validate_redirect_uris_for_password_grant_type = coalesce(
+    length(var.oauth_config["grant_types"]) == 1
+    && contains(var.oauth_config["grant_types"], "password")
+    && length(var.redirect_uris) >= 1
+    ? true : null
+  )
 }
