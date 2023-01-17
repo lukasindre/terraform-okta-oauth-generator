@@ -3,7 +3,7 @@ variable "label" {
   nullable    = false
   description = "this is the name of your service"
   validation {
-    condition     = 1 <= length(var.label) && length(var.label) <= 100
+    condition     = contains(range(1, 101), length(var.label))
     error_message = "Your app's label should be [1..100] characters long."
   }
 }

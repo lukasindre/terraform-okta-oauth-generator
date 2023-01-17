@@ -69,7 +69,7 @@ locals {
   validate_redirect_uris_for_password_grant_type = coalesce(
     length(var.oauth_config["grant_types"]) == 1
     && contains(var.oauth_config["grant_types"], "password")
-    && length(var.redirect_uris) >= 1
-    ? true : null
+    && length(var.redirect_uris) < 1
+    ? null : true
   )
 }
