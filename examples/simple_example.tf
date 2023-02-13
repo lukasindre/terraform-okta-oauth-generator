@@ -2,7 +2,7 @@
 The most simple declaration of the module
 
 module "example_app" {
-  source = "github.com/lukasindre/terraform-okta-oauth-generator.git?ref=v2.0.0"
+  source = "github.com/lukasindre/terraform-okta-oauth-generator.git?ref=v2.0.1"
   label  = "Test App"
   client_credentials = {
     client_client_id     = local.creds["client_client_id"]

@@ -73,7 +73,7 @@ variable "oauth_config" {
 
   validation {
     condition = var.oauth_config["application_type"] == "web" ? contains(var.oauth_config["grant_types"], "authorization_code") : true
-    error_message = "If your application type is `web`, you must AT LEAST have `authorization_code` in your `grant_types` list"
+    error_message = "If your application type is `web`, you must AT LEAST have `authorization_code` in your `grant_types` list."
   }
   validation {
     condition = contains(var.oauth_config["response_types"], "token") ? contains(var.oauth_config["grant_types"], "implicit") : true

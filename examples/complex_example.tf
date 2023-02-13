@@ -3,7 +3,7 @@ This declaration includes a couple more custom values
 that would most likely be used in a production scenario
 
 module "easy_bake_service" {
-  source = "github.com/lukasindre/terraform-okta-oauth-generator.git?ref=v2.0.0"
+  source = "github.com/lukasindre/terraform-okta-oauth-generator.git?ref=v2.0.1"
   label  = "Easy Bake Oven"
   scopes = [
     {
